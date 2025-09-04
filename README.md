@@ -34,6 +34,6 @@ This repository contains the notebook **Final_Dl_lab.ipynb**, which applies deep
 
 ---
 
-## 📄 File
+##  File
 
 - **Final_Dl_lab.ipynb** → includes dataset preparation, CNN implementation, ResNet-50 fine-tuning, evaluation, and model comparison.
