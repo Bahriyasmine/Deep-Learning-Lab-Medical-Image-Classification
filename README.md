@@ -4,7 +4,7 @@ This repository contains the notebook **Final_Dl_lab.ipynb**, which applies deep
 
 ---
 
-## 🔎 Work Done in the Notebook
+##  Work Done in the Notebook
 
 1. **Dataset**  
    - Used the [Tuberculosis (TB) Chest X-ray Database](https://www.kaggle.com/datasets/tawsifurrahman/tuberculosis-tb-chest-xray-dataset)  
