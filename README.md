@@ -1,63 +1,39 @@
-# Speech Emotion Recognition — VAE + Diffusion (CRISP-DM) with Streamlit
+# Tuberculosis Detection from Chest X-rays — CNN vs ResNet-50
 
-This project reproduces the methodology from the paper **“A Generation of Enhanced Data by Variational Autoencoders and Diffusion Modeling” (Electronics, March 2024)** to improve emotion clarity in speech recognition. We work with **EmoDB** (German) and **RAVDESS** (English) and deploy an interactive **Streamlit** app for inference and demos.
-
----
-
-## Objectives
-
-* Reproduce the paper’s pipeline: data preparation → VAE representation learning → conditional diffusion generation → downstream classifier evaluation.
-* Implement and evaluate additional models (e.g., CNN/ResNet/EfficientNet baselines) for comparison.
-* Explain the used architectures and training choices.
-* Evaluate with loss/accuracy and provide clear validation/test reporting.
-* Package an annotated notebook following **CRISP-DM**.
+This repository contains the notebook **Final_Dl_lab.ipynb**, which applies deep learning techniques for the detection of **Tuberculosis (TB)** from chest X-ray images.
 
 ---
 
-## Datasets
+## 🔎 Work Done in the Notebook
 
-* **EmoDB** — German emotional speech dataset.
-* **RAVDESS** — English emotional speech dataset.
+1. **Dataset**  
+   - Used the [Tuberculosis (TB) Chest X-ray Database](https://www.kaggle.com/datasets/tawsifurrahman/tuberculosis-tb-chest-xray-dataset)  
+   - Dataset contains:
+     - 700 TB-positive chest X-rays  
+     - 3,500 Normal chest X-rays  
+   - Data organized into folders for training and evaluation  
 
-Data are preprocessed into **mel-spectrograms** and standardized to a common sampling/config for joint training and evaluation.
+2. **Data Preparation**  
+   - Preprocessing and augmentation applied using `torchvision.transforms`  
+   - Training, validation, and test splits created  
 
----
+3. **Custom CNN Model**  
+   - Implemented a convolutional neural network from scratch  
+   - Layers: convolution, pooling, fully connected, dropout, batch normalization  
+   - Trained and validated on the chest X-ray dataset  
 
-## Methodology (CRISP-DM)
+4. **Pretrained Model — ResNet-50**  
+   - Loaded pretrained ResNet-50 from `torchvision.models`  
+   - Fine-tuned the model for TB detection  
+   - Evaluated using the same dataset and metrics  
 
-1. **Business Understanding**
-
-   * Goal: enhance emotion clarity and recognition performance using generative modeling.
-   * Success: improved accuracy on held-out emotion labels and clearer class separation.
-2. **Data Understanding**
-
-   * Inspect class balance, speaker distribution, recording conditions.
-   * Validate label mapping across EmoDB and RAVDESS.
-3. **Data Preparation**
-
-   * Audio loading, resampling, trimming/silence handling.
-   * Mel-spectrogram feature extraction; normalization; train/val/test split (speaker-aware where applicable).
-4. **Modeling**
-
-   * **VAE**: latent bottleneck for compact, emotion-aware embeddings.
-   * **Conditional Diffusion**: generate enhanced samples/features conditioned on emotion embeddings.
-   * **Baselines**: CNN/ResNet/EfficientNet for comparison.
-5. **Evaluation**
-
-   * Loss and accuracy across epochs; final test metrics.
-   * Visualizations such as confusion matrices and embedding plots.
-6. **Deployment**
-
-   * Streamlit application for uploading audio, visualizing mel-spectrograms, running inference, and comparing real vs. generated/enhanced representations.
+5. **Evaluation and Comparison**  
+   - Accuracy and loss curves plotted for both CNN and ResNet-50  
+   - Confusion matrix used to analyze classification quality  
+   - Comparison of CNN vs ResNet-50 performances  
 
 ---
 
-## Implementation Summary
+## 📄 File
 
-* **Feature pipeline**: librosa-based mel-spectrograms, consistent frequency/time shapes.
-* **VAE**: encoder–decoder trained with reconstruction + KL.
-* **Diffusion**: class-conditional UNet over mel or latent features; sampling to enhance clarity.
-* **Classifier**: trained on original and enhanced data; early stopping and regularization.
-* **Explainability**: confusion matrices, per-class accuracy; embedding visualizations.
-
-
+- **Final_Dl_lab.ipynb** → includes dataset preparation, CNN implementation, ResNet-50 fine-tuning, evaluation, and model comparison.
